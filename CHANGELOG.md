@@ -4,8 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+<a name="v4.0.8"></a>
+## v4.0.8 (2018-11-29)
+### Fixed
+* **Fixed Receiver Request method** - Fixed method setReceiverRequest which was not returning a MposPaymentRequest.
+
+
 <a name="v4.0.7"></a>
 ## v4.0.7 (2018-11-21)
+### Added
+* **Added logs** - Added logs to help us to identify issues regarding the sdk
 ### Fixed
 * **Fixed bluetooth connection** - Fixed bluetooth connection with some specific scenarios and devices.
 
