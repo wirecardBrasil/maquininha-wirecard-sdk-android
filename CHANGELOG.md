@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+<a name="v4.0.9"></a>
+## v4.0.9 (2018-12-29)
+### Added
+* **New `searchDevices` method** - Added a method that allows you to search for discoverable bluetooth pinpads, you need to . (The user needs to press `0` so the pinpad is discoverable)  
+* **New `PinpadSearchCallback` interface** - This interface returns either a BluetoothDevice on `onDeviceFound` or a MposError on `onError` callback.
+* **New `stopSearch` method** - Added new method to stop the broadcast receiver from the `searchDevices` method
+* **New `pairDevice` method** - Added new method to pair a device from inside your app, call this method sending the `bluetoothDevice` returned at the `searchDevices` method.
+
+<a name="v4.0.8"></a>
+
 <a name="v4.0.8"></a>
 ## v4.0.8 (2018-11-29)
 ### Fixed
