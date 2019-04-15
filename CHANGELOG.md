@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+
+<a name="v5.0.1"></a>
+## v5.0.1 (2019-04-15)
+* Transactional flow is now safer.
+* Fixed some bugs.
+
 <a name="v4.1.0"></a>
 ## v4.1.0 (2018-01-04)
 ### Fixed
@@ -35,10 +41,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <a name="v4.0.6"></a>
 ## v4.0.6 (2018-10-08)
 ### Added
-* **New `isPinpadConnected` method** - Added new method that checks if there's a pinpad connection or not
+* **New `isPinpadConnected` method** - Added new method that checks if there's a pinpad connection or not.
+
 ### Fixed
 * **Changed `MposPaymentRequest.setEmail()` signature** - Changed object to use the same signature to complain with method chaining as the rest of the object. Changed `mposPaymentRequest.setEmail(string)` to `mposPaymentRequest.email(string)` 
 * **Fixed incorrect return of `MposAction.PINPAD_FOUND**`- Fixed return of `PINPAD_FOUND`in situations where the pinpad was previously paired but not powered on.
+
+
 <a name="v4.0.5"></a>
 ## v4.0.5 (2018-09-11)
 ### IMPORTANT CHANGE!
