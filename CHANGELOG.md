@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <a name="v5.0.1"></a>
 ## v5.0.1 (2019-04-15)
+### Added
+* Now it is possible to transact with Amex Cards.
 * Transactional flow is now safer.
 * Fixed some bugs.
 
