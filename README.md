@@ -17,7 +17,7 @@ Caso você use o Gradle, você pode adicionar a dependência em seu projeto
 ```
 
 ```java
-        implementation 'br.com.moip.mpos:mpos-android-sdk:5.0.1'
+        implementation 'br.com.moip.mpos:mpos-android-sdk:5.4.0'
 ```
 
 # Permissões

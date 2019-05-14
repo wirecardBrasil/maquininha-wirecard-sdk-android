@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+
+
+<a name="v5.4.0"></a>
+## v5.4.0 (2019-05-14)
+### Added
+* Now you can send additional informations of customer on `MposPaymentRequest`
+
+
 <a name="v5.0.1"></a>
 ## v5.0.1 (2019-04-15)
 ### Added
