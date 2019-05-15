@@ -100,6 +100,9 @@ List items = Arrays.asList(item);
 MposPaymentRequest mposPaymentRequest = new MposPaymentRequest()
         .installment(1) // Quantidade de parcelas
         .ownId("#{SEU IDENTIFICADOR}") // OPCIONAL Identificador único da sua transação, caso não seja informado um valor aleatório será criado
+        .customerId("#{IDENTIFICADOR DO CLIENTE}")// OPCIONAL Identificador único do cliente, caso não seja informado um valor aleatório será criado
+        .name("#{NOME CLIENTE}")// OPCIONAL Nome do cliente, caso não seja informado um valor aleatório será criado
+        .email("#{EMAIL CLIENTE}")// OPCIONAL Email do cliente, caso não seja informado um valor aleatório será criado
         .type(MposPaymentRequest.Type.CREDIT) //  Tipo da transação: `MposPaymentRequest.Type.CREDIT` e `MposPaymentRequest.Type.DEBIT`
         .items(items); // Lista de itens criada
 
