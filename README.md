@@ -154,7 +154,7 @@ MposPaymentRequest mposPaymentRequest = new MposPaymentRequest()
 
 ## Criando um pagamento
 
-O que foi alterado nesse método, é que agora temos que passar como parâmetro a maquininha que desejamos realizar o pagamento. 
+Agora temos que passar como parâmetro a maquininha que desejamos realizar o pagamento. 
 Essa maquininha já deve estar pareada com seu dispositivo.
 
 ```java
@@ -238,6 +238,7 @@ No momento do pagamento podem ocorrer os possiveis erros:
 
 ## Adicionando um recebedor secundário
 Para casos de marketplaces ou aplicações com mais de um recebedor envolvido é possível definir recebedores secundários nos pedidos, para isso basta utilizar o objeto *ReceiverRequest* e adicioná-lo em seu OrderRequest.
+
 Ex:
 ```java
         ReceiverRequest receiverRequest = new ReceiverRequest().secondary("MPA-123", new AmountRequest().fixed(100));
@@ -247,7 +248,7 @@ Para maiores informações sobre a utilização de recebedores secundários, ace
 
 
 # Métodos utiltários
-**Obs: Todos os métodos acima que recebem como parâmetro um `pinpad` devem estar com ele pareado com o dispositivo que deseja realizar transações**
+**Obs: Todos os métodos acima que recebem como parâmetro um `pinpad`, devem estar com ele pareado com o dispositivo que deseja realizar transações**
 
 Temos esses métodos utilitários que podem ajudar no pareamento de novas maquininhas.
 
