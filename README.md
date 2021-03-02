@@ -1,29 +1,30 @@
-# Moip v2 MPos client SDK - Android
+# Moip v3 MPos client SDK - Android
 
 O jeito mais simples e rápido de integrar o moip ao seu App usando a Máquina de cartões para venda presencial do Moip 
 
-## Importante
+## Importante :warning:
 Tivemos que realizar a mudança de adquirente, por esse motivo, todas as versões passadas dessa SDK iram parar de funcionar. A atualização
 para a nova versão é obrigatória.
 
 
-## Instalação
+## Instalação :construction:
 
 **IMPORTANTE: Como ainda estamos em fase de desenvolvimento, não temos uma versão para disponibilizar via maven.**
 
 **O intuito dessa documentação é mostrar para clientes que já utilizam a sdk em seus aplicativos as mudanças que foram realizadas.**
+
 
 ## Permissões
 
 Para utilizar o SDK é necessário solicitar ao usuário as seguintes permissões:
 
 ```java
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission android:name="android.permission.BLUETOOTH" />
-        <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ```
 
 As permissões são necessárias para que seja possível fazer as requisições em nossas APIs e a conexão bluetooth com o POS que efetuará a cobrança.
@@ -35,16 +36,16 @@ Lembre-se de pedir as seguinte permissões antes de realizar qualquer chamada na
     android.permission.WRITE_EXTERNAL_STORAGE
 ```  
 
-# Configurando sua autenticação
+## Configurando sua autenticação
 
 Autenticando por BasicAuth:
 ```java
-      Authentication authentication = new BasicAuth("SEU_TOKEN", "SEU_KEY");
+    Authentication authentication = new BasicAuth("SEU_TOKEN", "SEU_KEY");
 ```
 
 Autenticando por OAuth:
 ```java
-        Authentication authentication = new OAuth("SEU_TOKEN_OAUTH");
+    Authentication authentication = new OAuth("SEU_TOKEN_OAUTH");
 ```
 
 Após definir o tipo de autenticação, é necessário inicializar o sdk e informar em qual ambiente você quer executar suas ações:
@@ -54,13 +55,13 @@ Após definir o tipo de autenticação, é necessário inicializar o sdk e infor
 
 ```java
 MoipMpos.init(activity, MoipMpos.Enviroment.PRODUCTION, authentication, new InitCallback() {
-    public void onSuccess() {
-        //SUCCESS
-    }
+        public void onSuccess() {
+            //SUCCESS
+        }
 
-    public void onError(MposError e) {
-        //ERROR
-    }
+        public void onError(MposError e) {
+            //ERROR
+        }
 });
 ```
 
@@ -70,17 +71,17 @@ MoipMpos.init(activity, MoipMpos.Enviroment.PRODUCTION, authentication, new Init
 MoipMpos.searchPinpads(new PairedPinpadsCallback() {
         @Override
         public void onPinpadsFound(List<BluetoothDevice> pinpads) {
-           
+           // Retorna todas maquininhas dos modelos válidos que a sdk suporta
         }
 
         @Override
         public void onActionChanged(MposAction action) {
-           
+           // Retorna o evento: MposAction.SEARCHING_PINPAD quando começar a busca pelas maquininhas
         }
 
         @Override
         public void onError(MposError error) {
-            
+            // ERROR
         }
 });
 ```
@@ -92,26 +93,27 @@ Logo esse método checa se a maquininha está apta para realizar um pagamento.
 
 ```java
 MoipMpos.isPinpadConnected(pinpad, new PinpadCallback() {
-    @Override
-    public void onSuccess() {
-        
-    }
+        @Override
+        public void onSuccess() {
+            // SUCCESS
+        }
 
-    @Override
-    public void onActionChanged(MposAction action) {
-        
-    }
+        @Override
+        public void onActionChanged(MposAction action) {
+            // Retorna o evento: MposAction.GETTING_PINPAD_CONNECTION quando começar a checagem de conexão
+        }
 
-    @Override
-    public void onError(MposError error) {
-        
-    }
+        @Override
+        public void onError(MposError error) {
+            // ERROR
+        }
 });
 ```
 
 ### Método depreciado
 
-**IMPORTANTE:** Não daremos mais suporte para esse método de pagamento, e iremos remové-lo nas próximas versões.
+**IMPORTANTE: :warning:** 
+Não daremos mais suporte para esse método de pagamento, e iremos remové-lo nas próximas versões.
 
 ```java
 MoipMpos.isPinpadConnected(new PinpadCallback() {
@@ -178,7 +180,8 @@ MoipMpos.charge(activity, pinpad, mposPaymentRequest, new MposCallback() {
 
 ### Método depreciado
 
-**IMPORTANTE:** Não daremos mais suporte para esse método de pagamento, e iremos remové-lo nas próximas versões.
+**IMPORTANTE: :warning:** 
+Não daremos mais suporte para esse método de pagamento, e iremos remové-lo nas próximas versões.
 
 ```java
 MoipMpos.charge(activity, mposPaymentRequest, new MposCallback() {
@@ -199,7 +202,8 @@ MoipMpos.charge(activity, mposPaymentRequest, new MposCallback() {
 
 ```
 
-**IMPORTANTE**: Ao criar o pagamento você receberá o objeto *MposPaymentResponse* como retorno, com ele em mãos é possível checar se o pagamento foi autorizado ou não através de seu status.
+**IMPORTANTE: :warning:** 
+Ao criar o pagamento você receberá o objeto *MposPaymentResponse* como retorno, com ele em mãos é possível checar se o pagamento foi autorizado ou não através de seu status.
 
 ## Status da transação
 Conforme a transação é realizada você receberá uma mensagem exibindo o status atual da transação, idealmente você deve exibir essa mensagem (ou uma similar) na tela do celular, para que o comprador e o vendedor possam se orientar.
@@ -223,6 +227,7 @@ No momento do pagamento o método `onActionChanged` lança vários eventos que e
 | MposAction.COMPLETED_SALE        | Venda finalizada                                   |
 
 
+
 ## Tratamento de erros
 Quando ocorre algum erro no processo de pagamento, você deve utilizar o método onError() que retornará um `MposError`.
 
@@ -236,19 +241,22 @@ No momento do pagamento podem ocorrer os possiveis erros:
 | POS-040 | Transação negada pelo host                   |
 | POS-041 | Cartão inválido ou vencido                   |
 
+
 ## Adicionando um recebedor secundário
 Para casos de marketplaces ou aplicações com mais de um recebedor envolvido é possível definir recebedores secundários nos pedidos, para isso basta utilizar o objeto *ReceiverRequest* e adicioná-lo em seu OrderRequest.
 
 Ex:
 ```java
-        ReceiverRequest receiverRequest = new ReceiverRequest().secondary("MPA-123", new AmountRequest().fixed(100));
-        mposPaymentRequest.setReceivers(Arrays.asList(receiverRequest));
+    ReceiverRequest receiverRequest = new ReceiverRequest().secondary("MPA-123", new AmountRequest().fixed(100));
+    mposPaymentRequest.setReceivers(Arrays.asList(receiverRequest));
 ```
+
 Para maiores informações sobre a utilização de recebedores secundários, acesse nossa documentação sobre [Split de Pagamentos](https://dev.wirecard.com.br/docs/split-de-pagamento) ou a [referência API](https://dev.wirecard.com.br/reference)
 
 
-# Métodos utiltários
-**Obs: Todos os métodos acima que recebem como parâmetro um `pinpad`, devem estar com ele pareado com o dispositivo que deseja realizar transações**
+# Métodos utilitários
+**Obs: :warning: 
+Todos os métodos acima que recebem como parâmetro um `pinpad` que deve estar pareado com o dispositivo que deseja realizar transações**
 
 Temos esses métodos utilitários que podem ajudar no pareamento de novas maquininhas.
 
@@ -259,12 +267,12 @@ Esse método irá retornar maquininhas que não estão estão pareadas com seu d
 DevicePairingManager.searchDevices(activity, new PinpadSearchCallback() {
     @Override
     public void onPinpadFound(BluetoothDevice pinpad) {
-        //retorna os pinpads encontrados
+        //Retorna os pinpads válidos que não estão pareados
     }
 
     @Override
     public void onError(MposError error) {
-
+        // ERROR
     }
 });
 ```
@@ -277,8 +285,11 @@ DevicePairingManager.stopSearch(activity);
 ## Parear com uma maquininha
 - Parâmetro `pinpad` significa com qual maquininha deveja parear
 - O método `onStateChange` retorna os seguintes estados
-`DevicePairingManager.State.PAIRING`: Está realizando o pareamento, com esse estado pode-se mostrar um feedback para o usuário avisando que o pareamento está sendo realizado.
+
+`DevicePairingManager.State.PAIRING`: Está realizando o pareamento. Com esse estado pode-se mostrar um feedback para o usuário avisando que o pareamento está sendo realizado.
+
 `DevicePairingManager.State.PAIRED`: Pareamento realizado com sucesso.
+
 `DevicePairingManager.State.NOT_PAIRED`: Ocorreu algum erro e o pareamento não foi realizado.
 
 
