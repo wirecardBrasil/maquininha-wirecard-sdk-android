@@ -233,13 +233,14 @@ Quando ocorre algum erro no processo de pagamento, você deve utilizar o método
 
 No momento do pagamento podem ocorrer os possiveis erros:
 | Código  |   Descrição      
-|:--------|:--------------------------------------------:|
-| POS-005 | Erro de conexão com a Maquininha             |
-| POS-010 | Valor deve ser maior ou igual a R$ 1,00 real |
-| POS-038 | Ocorreu um erro ao realizar a transação      |
-| POS-039 | Operação cancelada                           |
-| POS-040 | Transação negada pelo host                   |
-| POS-041 | Cartão inválido ou vencido                   |
+|:--------|:--------------------------------------------------------:|
+| POS-005 | Erro de conexão com a Maquininha                         |
+| POS-038 | Ocorreu um erro ao realizar a transação                  |
+| POS-039 | Operação cancelada                                       |
+| POS-040 | Transação negada pelo host                               |
+| POS-041 | Cartão inválido ou vencido                               |
+| POS-042 | Valor deve ser maior ou igual a R$ 1,00 real             |
+| POS-043 | Valor da parcela deve ser maior ou igual a R$ 5,00 reais |
 
 
 ## Adicionando um recebedor secundário
