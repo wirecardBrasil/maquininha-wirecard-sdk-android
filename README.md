@@ -3,16 +3,25 @@
 O jeito mais simples e rápido de integrar o moip ao seu App usando a Máquina de cartões para venda presencial do Moip 
 
 ## Importante :warning:
-Tivemos que realizar a mudança de adquirente, por esse motivo, todas as versões passadas dessa SDK iram parar de funcionar. A atualização
-para a nova versão é obrigatória.
+Foi realizada a mudança de adquirente, por esse motivo, todas as versões passadas deixaram de funcionar. 
+A atualização para a nova versão é obrigatória. Consulte a última versão no [`CHANGELOG`](CHANGELOG.md) 
 
+## Instalação
+Caso você use o Gradle, você pode adicionar a dependência em seu projeto
+```java
+    repositories {
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+        maven { url 'https://oss.sonatype.org/content/repositories/releases/' }
+    }
 
-## Instalação :construction:
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+```
 
-**IMPORTANTE: Como ainda estamos em fase de desenvolvimento, não temos uma versão para disponibilizar via maven.**
-
-**O intuito dessa documentação é mostrar para clientes que já utilizam a sdk em seus aplicativos as mudanças que foram realizadas.**
-
+```java
+    implementation 'br.com.moip:mpos-sdk:X.Y.Z'
+```
 
 ## Permissões
 
@@ -252,7 +261,7 @@ Ex:
     mposPaymentRequest.setReceivers(Arrays.asList(receiverRequest));
 ```
 
-Para maiores informações sobre a utilização de recebedores secundários, acesse nossa documentação sobre [Split de Pagamentos](https://dev.wirecard.com.br/docs/split-de-pagamento) ou a [referência API](https://dev.wirecard.com.br/reference)
+Para maiores informações sobre a utilização de recebedores secundários, acesse nossa documentação sobre [Split de Pagamentos](https://docs.moip.com.br/docs/split-de-pagamento) ou a [referência API](https://docs.moip.com.br/reference)
 
 
 # Métodos utilitários

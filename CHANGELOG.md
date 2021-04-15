@@ -4,8 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-
-
+<a name="v6.0.0"></a>
+## v6.0.0 (2021-04-15)
+### Added
+* **New `MoipMpos.searchPairedPinpads(PairedPinpadsCallback)` method** - Method that allows you to search for bluetooth pinpads paired to user's smartphone or tablet.
+* **New `MoipMpos.isPinpadConnected(BluetoothDevice, PinpadCallback)` method** - Method that allows you to check if a pinpad is connected.
+* **New `MoipMpos.charge(Context, BluetoothDevice, MposPaymentRequest, MposCallback)` method** - Method that allows you to create a mPOS charge using an specific paired pinpad.
+### Changed
+* **Method `MoipMpos.isPinpadConnected(PinpadCallback)` became deprecated** - This method will no longer work in future versions.
+* **Method `MoipMpos.charge(Context, MposPaymentRequest, MposCallback)` became deprecated** - This method will no longer work in future versions.
 
 <a name="v5.4.0"></a>
 ## v5.4.0 (2019-05-14)
