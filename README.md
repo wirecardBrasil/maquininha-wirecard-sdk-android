@@ -97,7 +97,7 @@ MoipMpos.searchPairedPinpads(new PairedPinpadsCallback() {
 
 ## Checando comunicação com a maquininha
 
-O parâmetro `pinpad` é do tipo `BluetoothDevice` e deve ser uma maquininha que já foi pareada com algum dispositivo.
+O parâmetro `pinpad` é do tipo `BluetoothDevice` e deve ser uma maquininha previamente pareada com o dispositivo.
 Logo esse método checa se a maquininha está apta para realizar um pagamento.
 
 ```java
@@ -122,7 +122,7 @@ MoipMpos.isPinpadConnected(pinpad, new PinpadCallback() {
 ### Método depreciado
 
 **IMPORTANTE: :warning:** 
-Não daremos mais suporte para esse método de pagamento, e iremos remové-lo nas próximas versões.
+Não daremos mais suporte para esse método, e iremos removê-lo nas próximas versões.
 
 ```java
 MoipMpos.isPinpadConnected(new PinpadCallback() {
@@ -177,7 +177,7 @@ MoipMpos.charge(activity, pinpad, mposPaymentRequest, new MposCallback() {
 
         @Override
         public void onActionChanged(MposAction action) {
-           //Status em que sua transação se encontra, você pode criar um dialog para exibir uma mensagem como preferir
+           // Status em que a transação se encontra, pode ser utilizado para atualizar a sua UI.
         }
 
         @Override
@@ -189,8 +189,8 @@ MoipMpos.charge(activity, pinpad, mposPaymentRequest, new MposCallback() {
 
 ### Método depreciado
 
-**IMPORTANTE: :warning:** 
-Não daremos mais suporte para esse método de pagamento, e iremos remové-lo nas próximas versões.
+**IMPORTANTE: :warning:**
+Não daremos mais suporte para esse método, e iremos removê-lo nas próximas versões.
 
 ```java
 MoipMpos.charge(activity, mposPaymentRequest, new MposCallback() {
@@ -248,8 +248,8 @@ No momento do pagamento podem ocorrer os possiveis erros:
 | POS-039 | Operação cancelada                                       |
 | POS-040 | Transação negada pelo host                               |
 | POS-041 | Cartão inválido ou vencido                               |
-| POS-042 | Valor deve ser maior ou igual a R$ 1,00 real             |
-| POS-043 | Valor da parcela deve ser maior ou igual a R$ 5,00 reais |
+| POS-042 | Valor deve ser maior ou igual a R$ 1,00                  |
+| POS-043 | Valor da parcela deve ser maior ou igual a R$ 5,00       |
 
 
 ## Adicionando um recebedor secundário
@@ -271,7 +271,7 @@ Todos os métodos acima que recebem como parâmetro um `pinpad` que deve estar p
 Temos esses métodos utilitários que podem ajudar no pareamento de novas maquininhas.
 
 ## Buscando maquininhas
-Esse método irá retornar maquininhas que não estão estão pareadas com seu dispositivo.
+Esse método irá retornar maquininhas suportadas que não estão pareadas com seu dispositivo.
 
 ```java
 DevicePairingManager.searchDevices(activity, new PinpadSearchCallback() {
@@ -293,7 +293,7 @@ DevicePairingManager.stopSearch(activity);
 ```
 
 ## Parear com uma maquininha
-- Parâmetro `pinpad` significa com qual maquininha deveja parear
+- O parâmetro `pinpad` é a maquininha que deseja parear
 - O método `onStateChange` retorna os seguintes estados
 
 `DevicePairingManager.State.PAIRING`: Está realizando o pareamento. Com esse estado pode-se mostrar um feedback para o usuário avisando que o pareamento está sendo realizado.
