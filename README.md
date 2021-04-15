@@ -3,8 +3,8 @@
 O jeito mais simples e rápido de integrar o moip ao seu App usando a Máquina de cartões para venda presencial do Moip 
 
 ## Importante :warning:
-Foi realizada a mudança de adquirente, por esse motivo, todas as versões passadas deixaram de funcionar. 
-A atualização para a nova versão é obrigatória. Consulte a última versão no [`CHANGELOG`](CHANGELOG.md) 
+Foi realizada a mudança de adquirente, por esse motivo, todas as versões passadas deixarão de funcionar a partir do dia 25/04.
+A atualização para a nova versão é obrigatória. Consulte a última versão no [`CHANGELOG`](CHANGELOG.md)
 
 ## Instalação
 Caso você use o Gradle, você pode adicionar a dependência em seu projeto
@@ -77,10 +77,10 @@ MoipMpos.init(activity, MoipMpos.Enviroment.PRODUCTION, authentication, new Init
 ## Busca por maquininhas pareadas válidas
 
 ```java
-MoipMpos.searchPinpads(new PairedPinpadsCallback() {
+MoipMpos.searchPairedPinpads(new PairedPinpadsCallback() {
         @Override
         public void onPinpadsFound(List<BluetoothDevice> pinpads) {
-           // Retorna todas maquininhas dos modelos válidos que a sdk suporta
+           // Retorna todas as maquininhas, de modelos válidos, pareadas com o dispositivo do usuário.
         }
 
         @Override
