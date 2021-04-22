@@ -6,6 +6,12 @@ O jeito mais simples e rápido de integrar o moip ao seu App usando a Máquina d
 Foi realizada a mudança de adquirente, por esse motivo, todas as versões passadas deixarão de funcionar a partir do dia 25/04.
 A atualização para a nova versão é obrigatória. Consulte a última versão no [`CHANGELOG`](CHANGELOG.md)
 
+## Dispositivos suportados
+
+O único modelo de maquininha que daremos suporte nessa versão:
+
+- D175-BT (Minizinha NFC)
+
 ## Instalação
 Caso você use o Gradle, você pode adicionar a dependência em seu projeto
 ```java
@@ -315,4 +321,22 @@ DevicePairingManager.pairDevice(activity, pinpad, new PinpadPairingCallback() {
 
     }
 });
+```
+## Exceções ProGuard
+
+- Caso você utilize o ProGuard para desenvolver o seu app Android, é preciso adicionar as exceções abaixo para que a SDK Android funcione corretamente.
+
+```
+-keep class br.com.moip.api.** {*;}
+-keep class br.com.moip.response.** {*;}
+-keep class br.com.moip.request.** {*;}
+-keep class br.com.moip.resource.** {*;}
+-keep class br.com.moip.android.entities.** {*;}
+
+-keep class br.com.uol.pagseguro.plugpag.** {*;}
+-keep class br.com.uol.pagseguro.libswitch.** {*;}
+-keep class br.com.uol.pagseguro.util.** {*;}
+
+-keep class com.segment.analytics.** { *; }
+-keep class androidx.lifecycle.DefaultLifecycleObserver
 ```
