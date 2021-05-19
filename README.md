@@ -1,25 +1,15 @@
 # Moip v3 MPos client SDK - Android
 
-O jeito mais simples e rápido de integrar o moip ao seu App usando a Máquina de cartões para venda presencial do Moip 
+O jeito mais simples e rápido de integrar o Moip ao seu App usando a Minizinha NFC
 
-## Importante :warning:
-Foi realizada a mudança de adquirente, por esse motivo, todas as versões passadas deixarão de funcionar a partir do dia 25/04.
-A atualização para a nova versão é obrigatória. Consulte a última versão no [`CHANGELOG`](CHANGELOG.md)
-
-## Dispositivos suportados
-
-O único modelo de maquininha que daremos suporte nessa versão:
-
-- D175-BT (Minizinha NFC)
-
-## Instalação
+# Instalação
 Caso você use o Gradle, você pode adicionar a dependência em seu projeto
 ```java
     repositories {
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
         maven { url 'https://oss.sonatype.org/content/repositories/releases/' }
     }
-
+    
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES'
     }
@@ -29,7 +19,9 @@ Caso você use o Gradle, você pode adicionar a dependência em seu projeto
     implementation 'br.com.moip:mpos-sdk:X.Y.Z'
 ```
 
-## Permissões
+Verifique a versão mais recente da SDK no [`CHANGELOG`](CHANGELOG.md)
+
+# Permissões
 
 Para utilizar o SDK é necessário solicitar ao usuário as seguintes permissões:
 
@@ -51,7 +43,7 @@ Lembre-se de pedir as seguinte permissões antes de realizar qualquer chamada na
     android.permission.WRITE_EXTERNAL_STORAGE
 ```  
 
-## Configurando sua autenticação
+# Configurando sua autenticação
 
 Autenticando por BasicAuth:
 ```java
@@ -242,20 +234,31 @@ No momento do pagamento o método `onActionChanged` lança vários eventos que e
 | MposAction.COMPLETED_SALE        | Venda finalizada                                   |
 
 
-
 ## Tratamento de erros
 Quando ocorre algum erro no processo de pagamento, você deve utilizar o método onError() que retornará um `MposError`.
 
 No momento do pagamento podem ocorrer os possiveis erros:
 | Código  |   Descrição      
-|:--------|:--------------------------------------------------------:|
-| POS-005 | Erro de conexão com a Maquininha                         |
-| POS-038 | Ocorreu um erro ao realizar a transação                  |
-| POS-039 | Operação cancelada                                       |
-| POS-040 | Transação negada pelo host                               |
-| POS-041 | Cartão inválido ou vencido                               |
-| POS-042 | Valor deve ser maior ou igual a R$ 1,00                  |
-| POS-043 | Valor da parcela deve ser maior ou igual a R$ 5,00       |
+|:--------|:--------------------------------------------------------------------------:|
+| POS-001 | Ocorreu um erro ao inicializar a mPOS. Tente novamente                     |                     
+| POS-002 | Maquininha não encontrada                                                  |
+| POS-003 | Maquininha não compatível                                                  |
+| POS-004 | Conexão com a maquininha não encontrada                                    |
+| POS-005 | Valor da transação inválido                                                |
+| POS-006 | Não foi possível criar uma conexão com a maquininha                        |
+| POS-007 | Ocorreu um erro ao realizar a transação                                    |
+| POS-008 | Operação cancelada                                                         |
+| POS-009 | Cartão inválido ou vencido                                                 |
+| POS-010 | Valor deve ser maior ou igual a R$ 1,00                                    |
+| POS-011 | Valor da parcela deve ser maior ou igual a R$ 5,00                         |
+| POS-012 | Transação não autorizada                                                   |
+| POS-013 | Transação duplicada                                                        |
+| POS-014 | Senha inválida                                                             |
+| POS-015 | Transação não permitida para o cartão                                      |
+| POS-016 | Cartão com erro ou mal inserido                                            |
+| POS-017 | Modo inválido. Verifique se foi selecionado débito ou crédito corretamente |
+| POS-018 | Erro pinpad. Desconecte e conecte novamente a maquininha                   |
+| POS-019 | Operação por aproximação não autorizada, utilize chip                      |
 
 
 ## Adicionando um recebedor secundário
@@ -322,12 +325,15 @@ DevicePairingManager.pairDevice(activity, pinpad, new PinpadPairingCallback() {
     }
 });
 ```
+
 ## Exceções ProGuard
 
-- Caso você utilize o ProGuard para desenvolver o seu app Android, é preciso adicionar as exceções abaixo para que a SDK Android funcione corretamente.
+- Caso você utilize o ProGuard para desenvolver o seu app Android, é preciso adicionar as exceções abaixo para que a SDK funcione corretamente.
 
 ```
 -keep class br.com.moip.api.** {*;}
+-keep class br.com.moip.API {*;}
+-keep class br.com.moip.Client {*;}
 -keep class br.com.moip.response.** {*;}
 -keep class br.com.moip.request.** {*;}
 -keep class br.com.moip.resource.** {*;}
