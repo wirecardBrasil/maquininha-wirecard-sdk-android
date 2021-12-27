@@ -11,7 +11,7 @@ Added support for Android 11 (API 30).
 ### Changed
 - Moved class `OAuth` from package `br.com.moip.authentication` to `import br.com.moip.mpos.authentication`
 - Moved class `BasicAuth` from package `br.com.moip.authentication` to `import br.com.moip.mpos.authentication`
-- Moved interface `BasicAuth` from package `br.com.moip.authentication` to `import br.com.moip.mpos.authentication`
+- Moved interface `Authentication` from package `br.com.moip.authentication` to `import br.com.moip.mpos.authentication`
 - Moved class `ItemRequest` from package `br.com.moip.request` to `br.com.moip.mpos.model.request`
 - Moved class `ReceiverRequest` from package `br.com.moip.request` to `br.com.moip.mpos.model.request`
 
