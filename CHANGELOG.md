@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+<a name="v7.0.0"></a>
+ ## v7.0.0 (2021-12-27)
+### Added
+Added support for Android 11 (API 30).
+### Changed
+- Moved class `OAuth` from package `br.com.moip.authentication` to `import br.com.moip.mpos.authentication`
+- Moved class `BasicAuth` from package `br.com.moip.authentication` to `import br.com.moip.mpos.authentication`
+- Moved interface `BasicAuth` from package `br.com.moip.authentication` to `import br.com.moip.mpos.authentication`
+- Moved class `ItemRequest` from package `br.com.moip.request` to `br.com.moip.mpos.model.request`
+- Moved class `ReceiverRequest` from package `br.com.moip.request` to `br.com.moip.mpos.model.request`
+
 <a name="v6.0.2"></a>
  ## v6.0.2 (2021-08-26)
 ### Changed
